@@ -5,7 +5,7 @@ wn = turtle.Screen()
 wn.title("Pong by koko")
 wn.bgcolor("black")
 wn.setup(width=800, height=600)
-wn.tracer(0)
+wn.tracer(1)
 
 
 # Paddle A
@@ -89,5 +89,14 @@ while True:
         ball.dy *= -1
 
     if ball.xcor() > 390:
-        ball.goto(0)
+        ball.goto(0 ,0)
+        ball.dx *= -1
+
+
+    if ball.xcor() < -390:
+        ball.goto(0,0)
+        ball.dx *= -1
+
+    # paddle and ball collisions
+    if ball.xcor() > 340 and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
         ball.dx *= -1
